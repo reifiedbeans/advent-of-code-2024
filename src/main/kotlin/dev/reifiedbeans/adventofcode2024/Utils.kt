@@ -4,5 +4,4 @@ import java.io.File
 
 fun getInput(name: String) = File("input", "$name.txt")
 
-fun File.readLinesChunked(delimiter: String = "\n\n") =
-    this.readText().trim('\n').split(delimiter).map(String::lines)
+fun File.readLinesChunked(delimiter: String = "\n\n") = this.readText().trim('\n').split(delimiter).map(String::lines)
