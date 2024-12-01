@@ -7,8 +7,9 @@ private fun part1(list1: List<Int>, list2: List<Int>): Int {
     return pairs.sumOf { (first, second) -> abs(first - second) }
 }
 
-private fun part2(list1: List<Int>, list2: List<Int>) = list1.fold(0) { score, num ->
-    score + (list2.count { it == num } * num)
+private fun part2(list1: List<Int>, list2: List<Int>): Int {
+    val frequencies = list2.groupingBy { it }.eachCount()
+    return list1.sumOf { it * frequencies.getOrDefault(it, 0) }
 }
 
 private fun List<String>.parse() = this.map { it.split("\\s+".toRegex()).map(String::toInt).toPair() }.unzip()
