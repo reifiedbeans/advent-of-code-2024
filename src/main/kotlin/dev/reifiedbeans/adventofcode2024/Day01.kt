@@ -15,8 +15,8 @@ private fun List<String>.parse() = this.map { it.split("\\s+".toRegex()).map(Str
 
 fun main() {
     val (testList1, testList2) = getInput("Day01_test").readLines().parse()
-    check(part1(testList1, testList2) == 11)
-    check(part2(testList1, testList2) == 31)
+    assertEquals(11, part1(testList1, testList2))
+    assertEquals(31, part2(testList1, testList2))
 
     val (list1, list2) = getInput("Day01").readLines().parse()
     println("Part 1: ${part1(list1, list2)}")
