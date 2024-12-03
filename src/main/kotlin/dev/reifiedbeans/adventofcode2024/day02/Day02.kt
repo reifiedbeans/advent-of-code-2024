@@ -1,14 +1,17 @@
-package dev.reifiedbeans.adventofcode2024
+package dev.reifiedbeans.adventofcode2024.day02
+
+import dev.reifiedbeans.adventofcode2024.util.asSequence
+import dev.reifiedbeans.adventofcode2024.util.assertEquals
+import dev.reifiedbeans.adventofcode2024.util.getInput
+import dev.reifiedbeans.adventofcode2024.util.withIndexRemoved
 
 private typealias Report = List<Int>
 
 private fun part1(reports: List<Report>) = reports.count { it.isSafe() }
 
-private fun part2(reports: List<Report>): Int {
-    fun dampenedReportsFor(report: Report) = report.indices.asSequence { report.withIndexRemoved(it) }
+private fun part2(reports: List<Report>) = reports.count { it.isSafe() || dampenedReportsFor(it).any(Report::isSafe) }
 
-    return reports.count { it.isSafe() || dampenedReportsFor(it).any(Report::isSafe) }
-}
+private fun dampenedReportsFor(report: Report) = report.indices.asSequence { report.withIndexRemoved(it) }
 
 private fun Report.isSafe(): Boolean {
     val deltas = this.windowed(2) { it[1] - it[0] }

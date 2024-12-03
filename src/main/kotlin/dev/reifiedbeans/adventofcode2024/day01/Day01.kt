@@ -1,5 +1,8 @@
-package dev.reifiedbeans.adventofcode2024
+package dev.reifiedbeans.adventofcode2024.day01
 
+import dev.reifiedbeans.adventofcode2024.util.assertEquals
+import dev.reifiedbeans.adventofcode2024.util.getInput
+import dev.reifiedbeans.adventofcode2024.util.toPair
 import kotlin.math.abs
 
 private fun part1(list1: List<Int>, list2: List<Int>): Int {
