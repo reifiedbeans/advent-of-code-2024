@@ -11,3 +11,7 @@ repositories {
 kotlin {
     jvmToolchain(21)
 }
+
+ktlint {
+    version = "1.5.0"
+}

@@ -1,6 +1,11 @@
 package dev.reifiedbeans.adventofcode2024.util
 
 /**
+ * Removes and returns the first element in a non-mutable [List] along with a copy of the list with the element removed.
+ */
+fun <T> List<T>.pop() = this.firstOrNull() to this.drop(1)
+
+/**
  * Converts a [List] of two elements to a [Pair]. Written for convenience, but I don't condone it. Use caution.
  * @throws IllegalArgumentException if the [List] does not have exactly two elements
  */
