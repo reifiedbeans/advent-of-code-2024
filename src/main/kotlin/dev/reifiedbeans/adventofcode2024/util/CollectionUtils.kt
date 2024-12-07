@@ -20,3 +20,18 @@ fun <T> List<T>.toPair(): Pair<T, T> {
 fun <T, R> Iterable<T>.asSequence(transform: (T) -> R) = this.asSequence().map(transform)
 
 fun <T> List<T>.withIndexRemoved(index: Int) = this.slice(this.indices - index)
+
+fun <T> generatePermutations(values: Set<T>, size: Int) = generatePermutations(values, size, currentList = listOf())
+
+@Suppress("ktlint:standard:function-expression-body")
+private fun <T> generatePermutations(values: Set<T>, size: Int, currentList: List<T>): Sequence<List<T>> {
+    return if (currentList.size == size) {
+        sequenceOf(currentList)
+    } else {
+        sequence {
+            values.forEach {
+                yieldAll(generatePermutations(values, size, currentList + it))
+            }
+        }
+    }
+}
